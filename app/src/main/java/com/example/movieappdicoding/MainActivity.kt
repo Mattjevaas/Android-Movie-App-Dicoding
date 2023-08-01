@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.action_profile -> {
+            R.id.about_page -> {
                 val intent = Intent(binding.root.context, ProfileActivity::class.java)
                 startActivity(intent)
             }
