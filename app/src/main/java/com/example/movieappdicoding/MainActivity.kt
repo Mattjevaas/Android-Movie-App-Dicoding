@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.SearchView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movieappdicoding.databinding.ActivityMainBinding
 import com.google.gson.Gson
@@ -74,7 +75,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun goToMovieDetail(movie: Movie){
-
+        val moveIntent = Intent(this, DetailMovieActivity::class.java)
+        moveIntent.putExtra(DetailMovieActivity.EXTRA_MOVIE, movie)
+        startActivity(moveIntent)
     }
 
     private fun onSearch(query: String?) {

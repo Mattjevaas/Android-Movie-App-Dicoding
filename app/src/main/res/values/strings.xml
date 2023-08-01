@@ -8,4 +8,9 @@
     <string name="image_profile">Image Profile</string>
     <string name="johanes_wiku_sakti">Johanes Wiku Sakti</string>
     <string name="email">johaneswiku@protonmail.ch</string>
+    <string name="genre">Genre</string>
+    <string name="director">Director</string>
+    <string name="released">Released</string>
+    <string name="title">Title</string>
+    <string name="image_movie">Image Movie</string>
 </resources>
