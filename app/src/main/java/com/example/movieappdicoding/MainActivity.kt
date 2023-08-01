@@ -8,6 +8,8 @@ import com.example.movieappdicoding.databinding.ActivityMainBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import getJsonDataFromAsset
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +25,8 @@ class MainActivity : AppCompatActivity() {
         binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(v: String?): Boolean {
                 onSearch(v)
+
+                binding.searchView.clearFocus()
                 return false
             }
 
@@ -66,12 +70,16 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        val search = list.takeWhile { movie -> movie.title.contains(query) }
+        val search = list.filter { movie -> movie.title.contains(query, ignoreCase = true) }
+
         if(search.isNotEmpty()) {
             listSearch.addAll(search)
+            val listMovieAdapter = ListMovieAdapter(listSearch, ::goToMovieDetail)
+            binding.rvMovies.adapter = listMovieAdapter
+        } else {
+            val listMovieAdapter = ListMovieAdapter(list, ::goToMovieDetail)
+            binding.rvMovies.adapter = listMovieAdapter
         }
 
-        val listMovieAdapter = ListMovieAdapter(listSearch, ::goToMovieDetail)
-        binding.rvMovies.adapter = listMovieAdapter
     }
 }
