@@ -1,14 +1,16 @@
 package com.example.movieappdicoding
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movieappdicoding.databinding.ActivityMainBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import getJsonDataFromAsset
-import java.util.*
 import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
@@ -34,13 +36,27 @@ class MainActivity : AppCompatActivity() {
                 onSearch(v)
                 return false
             }
-
         })
-        binding.rvMovies.setHasFixedSize(true)
 
+        binding.rvMovies.setHasFixedSize(true)
         list.addAll(getAllMovieData())
-        print(list)
         showRecyclerList()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.app_bar_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.action_profile -> {
+                val intent = Intent(binding.root.context, ProfileActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+        return false
     }
 
     private fun getAllMovieData(): ArrayList<Movie> {
@@ -48,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         val gson = Gson()
         val listMovieType = object : TypeToken<ArrayList<Movie>>() {}.type
 
-        return gson.fromJson(jsonFileString, listMovieType);
+        return gson.fromJson(jsonFileString, listMovieType)
     }
 
     private fun showRecyclerList() {

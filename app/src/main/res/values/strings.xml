@@ -3,4 +3,9 @@
     <string name="movies_avatar">Movies Avatar</string>
     <string name="movies_name">Movies Name</string>
     <string name="description">Description</string>
+    <string name="search_here">Search Here</string>
+    <string name="profile">Profile</string>
+    <string name="image_profile">Image Profile</string>
+    <string name="johanes_wiku_sakti">Johanes Wiku Sakti</string>
+    <string name="email">johaneswiku@protonmail.ch</string>
 </resources>
