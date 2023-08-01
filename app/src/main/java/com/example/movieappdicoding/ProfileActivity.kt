@@ -10,6 +10,7 @@ class ProfileActivity : AppCompatActivity() {
         val binding  = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.title = "Profile"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
